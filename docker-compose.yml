@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      TZ: "UTC"
+
+    volumes:
+      - ./data:/var/spool/squid
+      - ./config/squid.conf:/etc/squid/squid.conf
+      - ./config/snippet.conf:/etc/squid/conf.d/snippet.conf
+      - ./config/passwd:/etc/squid/passwd
